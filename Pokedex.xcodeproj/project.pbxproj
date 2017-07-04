@@ -45,7 +45,7 @@
 			isa = PBXGroup;
 			children = (
 				E1AA95DE1F0690A000A0E736 /* Model */,
-				E1AA95DD1F068D1500A0E736 /* Controler */,
+				E1AA95DD1F068D1500A0E736 /* Controller */,
 				E1AA95DC1F068D0E00A0E736 /* View */,
 				E13395B41EF176C2002DA49E /* Pokedex */,
 				E13395B31EF176C2002DA49E /* Products */,
@@ -64,7 +64,6 @@
 			isa = PBXGroup;
 			children = (
 				E13395B51EF176C2002DA49E /* AppDelegate.swift */,
-				E13395B71EF176C2002DA49E /* ViewController.swift */,
 				E13395B91EF176C2002DA49E /* Main.storyboard */,
 				E13395BC1EF176C2002DA49E /* Assets.xcassets */,
 				E13395BE1EF176C2002DA49E /* LaunchScreen.storyboard */,
@@ -82,11 +81,12 @@
 			path = Pokedex;
 			sourceTree = "<group>";
 		};
-		E1AA95DD1F068D1500A0E736 /* Controler */ = {
+		E1AA95DD1F068D1500A0E736 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E13395B71EF176C2002DA49E /* ViewController.swift */,
 			);
-			name = Controler;
+			name = Controller;
 			path = Pokedex;
 			sourceTree = "<group>";
 		};

@@ -9,7 +9,6 @@
 import UIKit
 
 class PokeCell: UICollectionViewCell {
-    //TO DO : (modify label, modify image) set a function that creates a pokemon class
 
     @IBOutlet weak var Pokeimage: UIImageView!
     @IBOutlet weak var pokemonname: UILabel!
@@ -19,6 +18,7 @@ class PokeCell: UICollectionViewCell {
     func configurecell(){
         self.Pokeimage.image = UIImage(named: "\(self.DisplayedPokemon.pokemonid)")
         self.pokemonname.text = DisplayedPokemon.name
+        layer.cornerRadius = 2
     }
     
 }
