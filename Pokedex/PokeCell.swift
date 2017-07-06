@@ -18,7 +18,7 @@ class PokeCell: UICollectionViewCell {
     func configurecell(){
         self.Pokeimage.image = UIImage(named: "\(self.DisplayedPokemon.pokemonid)")
         self.pokemonname.text = DisplayedPokemon.name.capitalized
-        layer.cornerRadius = 3
+        layer.cornerRadius = 4
     }
     
 }

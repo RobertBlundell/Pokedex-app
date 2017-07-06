@@ -11,16 +11,16 @@ import UIKit
 class PokemonDetailVC: UIViewController {
     
     @IBOutlet weak var Label: UILabel!
-    
     var DetailedPokemon: Pokemon!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        Label.text = DetailedPokemon.name
+        Label.text = DetailedPokemon.name.capitalized
         
     }
     
-
-
-
+    @IBAction func leaveButton(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    
 }
