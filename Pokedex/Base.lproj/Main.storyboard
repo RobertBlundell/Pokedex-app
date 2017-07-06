@@ -28,12 +28,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="hrj-12-nQF">
+                            <searchBar contentMode="redraw" placeholder="Search pokemon" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hrj-12-nQF">
                                 <rect key="frame" x="0.0" y="70" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Yce-Mj-aHD"/>
                                 </constraints>
+                                <color key="barTintColor" red="1" green="0.34509803919999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="" value="''Search pokemon&quot;"/>
+                                </userDefinedRuntimeAttributes>
                             </searchBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pokemon background" translatesAutoresizingMaskIntoConstraints="NO" id="ef4-xO-Hs7">
                                 <rect key="frame" x="0.0" y="114" width="375" height="553"/>
@@ -393,6 +397,18 @@
                     </view>
                     <connections>
                         <outlet property="Label" destination="Dpw-CV-nX2" id="2M8-X3-Z2C"/>
+                        <outlet property="evolutionlabel" destination="I1k-S8-l48" id="3Of-YU-To1"/>
+                        <outlet property="firstevolution" destination="Ksd-OU-Poi" id="N16-6v-C3s"/>
+                        <outlet property="mainimage" destination="wHe-nX-kSq" id="NfX-JX-e4Y"/>
+                        <outlet property="pokedexID" destination="N53-lK-Pkd" id="tZJ-Sp-6ov"/>
+                        <outlet property="pokemonattack" destination="0JQ-aE-ROK" id="5kv-LR-0KX"/>
+                        <outlet property="pokemondefense" destination="QTS-yJ-VrZ" id="AVk-Nx-zdQ"/>
+                        <outlet property="pokemondescription" destination="IAV-aV-4qm" id="NLP-YM-uoJ"/>
+                        <outlet property="pokemonheight" destination="oFZ-G8-MSs" id="w20-eN-ILq"/>
+                        <outlet property="pokemontype" destination="N1r-9d-DYN" id="bEh-Eb-ipj"/>
+                        <outlet property="pokemonweight" destination="ImW-5e-Amo" id="kTs-j8-ZYZ"/>
+                        <outlet property="secondevolution" destination="3s3-ih-N0V" id="0g2-2T-n9N"/>
+                        <outlet property="thirdevolution" destination="iFZ-uW-xfi" id="g5x-yj-ow8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iol-8p-D3f" userLabel="First Responder" sceneMemberID="firstResponder"/>

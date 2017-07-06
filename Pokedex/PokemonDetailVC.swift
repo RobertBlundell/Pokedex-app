@@ -10,12 +10,32 @@ import UIKit
 
 class PokemonDetailVC: UIViewController {
     
-    @IBOutlet weak var Label: UILabel!
+
     var DetailedPokemon: Pokemon!
 
+    @IBOutlet weak var Label: UILabel!
+    @IBOutlet weak var mainimage: UIImageView!
+    @IBOutlet weak var pokemondescription: UILabel!
+    @IBOutlet weak var pokemontype: UILabel!
+    @IBOutlet weak var pokemonheight: UILabel!
+    @IBOutlet weak var pokemonweight: UILabel!
+    @IBOutlet weak var pokemondefense: UILabel!
+    @IBOutlet weak var pokedexID: UILabel!
+    @IBOutlet weak var pokemonattack: UILabel!
+    @IBOutlet weak var evolutionlabel: UILabel!
+    @IBOutlet weak var firstevolution: UIImageView!
+    @IBOutlet weak var secondevolution: UIImageView!
+    @IBOutlet weak var thirdevolution: UIImageView!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         Label.text = DetailedPokemon.name.capitalized
+        
+    }
+    
+    func parsedata() {
         
     }
     
