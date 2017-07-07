@@ -33,11 +33,19 @@ class PokemonDetailVC: UIViewController {
         super.viewDidLoad()
         Label.text = DetailedPokemon.name.capitalized
         
+        DetailedPokemon.downloadinformation { 
+            self.pokemonheight.text = self.DetailedPokemon.pokemonHeight
+            self.pokemonweight.text = self.DetailedPokemon.pokemonWeight
+            self.pokemonattack.text = self.DetailedPokemon.pokemonAttack
+            self.pokemondefense.text = self.DetailedPokemon.pokemonDefense
+            
+            print("Labels changed")
+        }
+        
+
     }
     
-    func parsedata() {
-        
-    }
+
     
     @IBAction func leaveButton(_ sender: Any) {
         dismiss(animated: true)
