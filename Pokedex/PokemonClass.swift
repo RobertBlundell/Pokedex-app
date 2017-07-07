@@ -16,16 +16,13 @@ class Pokemon {
     private var _nameLabel: String!
     private var _mainImage: String!
     private var _pokemonDescription: String!
-    private var _pokemonType: String!
+    private var _pokemonType = ""
     private var _pokemonHeight: String!
     private var _pokemonWeight: String!
     private var _pokemonDefense: String!
-    private var _pokedexID: String!
     private var _pokemonAttack: String!
-    private var _evolutionLabel: String!
-    private var _firstEvolution: String!
-    private var _secondEvolution: String!
-    private var _thirdEvolution: String!
+    private var _evolution: String!
+    private var _mega: String!
     
     private var pokemonURL:String!
     
@@ -51,9 +48,6 @@ class Pokemon {
     }
     
     var pokemonType: String {
-        if _pokemonType == nil {
-            return ""
-        }
         return _pokemonType
     }
     
@@ -78,13 +72,6 @@ class Pokemon {
         return _pokemonDefense
     }
     
-    var pokedexID: String {
-        if _pokedexID == nil {
-            return ""
-        }
-        return _pokedexID
-    }
-    
     var pokemonAttack: String {
         if _pokemonAttack == nil {
             return ""
@@ -92,32 +79,18 @@ class Pokemon {
         return _pokemonAttack
     }
     
-    var evolutionLabel: String {
-        if _evolutionLabel == nil {
+    var evolution: String {
+        if _evolution == nil {
             return ""
         }
-        return _evolutionLabel
+        return _evolution
     }
     
-    var firstEvolution: String {
-        if _firstEvolution == nil {
+    var mega: String {
+        if _mega == nil {
             return ""
         }
-        return _firstEvolution
-    }
-    
-    var secondEvolution: String {
-        if _secondEvolution == nil {
-            return ""
-        }
-        return _secondEvolution
-    }
-    
-    var thirdEvolution: String {
-        if _thirdEvolution == nil {
-            return ""
-        }
-        return _thirdEvolution
+        return _mega
     }
     
     var name: String {
@@ -138,7 +111,6 @@ class Pokemon {
     func downloadinformation(complete: @escaping () -> ()) {
         
         request(pokemonURL).responseJSON { URLResponse in
-            print(URLResponse)
             
             if let dict = URLResponse.result.value as? Dictionary<String, Any?> {
                 
@@ -162,7 +134,43 @@ class Pokemon {
                     print("defense:\(self.pokemonDefense)")
                 }
                 
+                if let types = dict["types"] as? [Dictionary<String,String>], types.count > 0 {
+                    self._pokemonType = ""
+                    for type in types {
+                        if type != types[0] {
+                            self._pokemonType.append(" / ")
+                        }
+                        if let name = type["name"]{
+                            self._pokemonType.append(name.capitalized)
+                        }
+                    }
+                    print(self.pokemonType)
+                }
                 
+                if let evolutiondict = dict["evolutions"] as? [Dictionary<String,Any>], evolutiondict.count > 0 {
+                    if let evolution = evolutiondict[0]["to"] as? String {
+                        self._evolution = evolution
+                    }
+                    if let mega = evolutiondict[0]["detail"] as? String{
+                        self._mega = mega
+                        print(mega)
+                    }
+                }
+                
+                if let descriptions = dict["descriptions"] as? [Dictionary<String,String>], descriptions.count > 0 {
+                    if let resource = descriptions[0]["resource_uri"] {
+                        let descriptionURL = "http://pokeapi.co\(resource)"
+                        request(descriptionURL).responseJSON { URLResponse in
+                            if let dict = URLResponse.result.value as? Dictionary<String, Any> {
+                                if let finaldescription = dict["description"] as? String {
+                                    let finalfinaldescription = finaldescription.replacingOccurrences(of: "POKMON", with: "pokemon")
+                                    self._pokemonDescription = finalfinaldescription
+                                }
+                            }
+                            complete()
+                        }
+                    }
+                }
             }
             complete()
             

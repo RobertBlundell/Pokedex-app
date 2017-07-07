@@ -23,8 +23,6 @@ class PokemonDetailVC: UIViewController {
     @IBOutlet weak var pokedexID: UILabel!
     @IBOutlet weak var pokemonattack: UILabel!
     @IBOutlet weak var evolutionlabel: UILabel!
-    @IBOutlet weak var firstevolution: UIImageView!
-    @IBOutlet weak var secondevolution: UIImageView!
     @IBOutlet weak var thirdevolution: UIImageView!
     
     
@@ -32,14 +30,22 @@ class PokemonDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         Label.text = DetailedPokemon.name.capitalized
+        mainimage.image = UIImage(imageLiteralResourceName: "\(DetailedPokemon.pokemonid)")
+        pokedexID.text = String(DetailedPokemon.pokemonid)
         
-        DetailedPokemon.downloadinformation { 
+        
+        DetailedPokemon.downloadinformation() {
             self.pokemonheight.text = self.DetailedPokemon.pokemonHeight
             self.pokemonweight.text = self.DetailedPokemon.pokemonWeight
             self.pokemonattack.text = self.DetailedPokemon.pokemonAttack
             self.pokemondefense.text = self.DetailedPokemon.pokemonDefense
-            
-            print("Labels changed")
+            self.pokemontype.text = self.DetailedPokemon.pokemonType
+            self.pokemondescription.text = self.DetailedPokemon.pokemonDescription
+            if self.DetailedPokemon.evolution != "" && self.DetailedPokemon.mega != "mega" {
+                self.evolutionlabel.text = "The evolution of \(self.DetailedPokemon.name.capitalized) is \(self.DetailedPokemon.evolution.capitalized)!"
+                self.thirdevolution.image = UIImage(named: "\(Int(self.DetailedPokemon.pokemonid) + 1)")
+                self.thirdevolution.backgroundColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1)
+            } else {self.evolutionlabel.text = "\(self.DetailedPokemon.name.capitalized) has no evolution"}
         }
         
 

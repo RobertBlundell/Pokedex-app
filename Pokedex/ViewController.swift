@@ -134,7 +134,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         searchBar.endEditing(true)
-        //Transitions to PokemonDetailVC
         
         var SelectedPokemon: Pokemon
             
@@ -170,7 +169,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
   
     
-//    I believe thses aren't needed — The information is already present in the IB
+//    I believe these aren't needed — The information is already present in the IB
 //    func numberOfSections(in collectionView: UICollectionView) -> Int {
 //        return 1
 //    }
